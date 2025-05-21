@@ -3,7 +3,18 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.tri import Triangulation
 
-def plot_double_integral(f, in_region, xlim, ylim, resolution=200):
+def read_resolution_from_settings(path="settings.txt", default=80):
+    try:
+        with open(path, 'r') as file:
+            for line in file:
+                if "resolution" in line:
+                    start = line.find('{') + 1
+                    end = line.find('}')
+                    return int(line[start:end])
+    except Exception as e:
+        print(f"⚠️ Could not read resolution from settings.txt: {e}")
+    return default
+def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_from_settings()):
     x = np.linspace(xlim[0], xlim[1], resolution)
     y = np.linspace(ylim[0], ylim[1], resolution)
     xv, yv = np.meshgrid(x, y)
