@@ -1,2 +1,5 @@
 numpy
 matplotlib
+os
+datetime
+re

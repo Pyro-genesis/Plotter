@@ -2,6 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.tri import Triangulation
+import os
+from datetime import datetime
+import re
+
+def sanitize_filename(name):
+    return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
 def read_resolution_from_settings(path="settings.txt", default=80):
     try:
@@ -14,6 +20,7 @@ def read_resolution_from_settings(path="settings.txt", default=80):
     except Exception as e:
         print(f"⚠️ Could not read resolution from settings.txt: {e}")
     return default
+
 def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_from_settings()):
     x = np.linspace(xlim[0], xlim[1], resolution)
     y = np.linspace(ylim[0], ylim[1], resolution)
@@ -48,8 +55,16 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     ax.set_title("Double Integral Surface with Shaded Volume")
     plt.show()
     plt.tight_layout()
-    plt.savefig("double_integral_plot.png")
-    print("✅ Plot saved as double_integral_plot.png")
+    func_name = sanitize_filename(func_str.split('(')[0].strip())  # crude extraction before "(" if any
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    folder = "functions"
+    os.makedirs(folder, exist_ok=True)
+    filename = f"{func_name}-{timestamp}.png"
+    filepath = os.path.join(folder, filename)
+    plt.tight_layout()
+    plt.savefig(filepath)
+    print(f"✅ Plot saved as {filepath}")
+
 
 if __name__ == "__main__":
     import math
