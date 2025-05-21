@@ -35,8 +35,10 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=200):
     ax.set_ylabel('y')
     ax.set_zlabel('z')
     ax.set_title("Double Integral Surface with Shaded Volume")
-    plt.tight_layout()
     plt.show()
+    plt.tight_layout()
+    plt.savefig("double_integral_plot.png")
+    print("✅ Plot saved as double_integral_plot.png")
 
 if __name__ == "__main__":
     import math
