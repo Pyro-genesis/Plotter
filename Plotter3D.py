@@ -33,7 +33,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     ])
     if len(points) == 0:
         raise ValueError("No points found in the region R.")
-
+8
     x_in = points[:, 0]
     y_in = points[:, 1]
     z_in = f(x_in, y_in)
@@ -49,6 +49,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     for i in range(len(z_in)):
         ax.plot([x_in[i], x_in[i]], [y_in[i], y_in[i]], [0, z_in[i]], color='gray', alpha=0.2)
 
+    ax.plot_trisurf(x_in, y_in, np.zeros_like(z_in), color='lightgrey', alpha=0.3)
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
@@ -90,7 +91,15 @@ if __name__ == "__main__":
     def f(x, y):
         return eval(func_str, allowed_names | {'x': x, 'y': y})
 
-    def in_region(x, y):
-        return eval(region_str, allowed_names | {'x': x, 'y': y})
+    if region_str.strip() == "":
+        def in_region(x, y):
+            return True
+    else:
+        def in_region(x, y):
+            try:
+                return eval(region_str, allowed_names | {'x': x, 'y': y})
+            except:
+                return False
 
+    
     plot_double_integral(f, in_region, xlim=(x_min, x_max), ylim=(y_min, y_max))
