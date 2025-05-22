@@ -15,4 +15,4 @@ mod resolution in settings.txt
 my take on a volume two integral visualizer...ya! 
 maybe more...
 
-v1.4.0[2025/05/21]
+v1.4.1[2025/05/21]

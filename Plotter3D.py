@@ -55,7 +55,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
-    ax.plot_trisurf(tri, z_in, cmap=cm.get_cmap(cmap_name), edgecolor='none', alpha=0.9)
+    ax.plot_trisurf(tri, z_in, cmap=plt.colormaps[cmap_name], edgecolor='none', alpha=0.9)
     ax.plot_trisurf(tri, np.zeros_like(z_in), color='lightgray', alpha=0.25)
 
     for i in range(len(z_in)):

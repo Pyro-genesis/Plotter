@@ -39,7 +39,7 @@ def plot_single_integral(f, xlim, resolution=read_resolution_from_settings()):
 
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(x, y, 'b', linewidth=2)
-    ax.fill_between(x, 0, y, color=cm.get_cmap(cmap_name)(0.5), alpha=0.6)
+    ax.fill_between(x, 0, y, color=plt.colormaps[cmap_name](0.5), alpha=0.6)
 
     ax.axhline(0, color='gray', linewidth=0.8)
     ax.set_xlabel('x')
