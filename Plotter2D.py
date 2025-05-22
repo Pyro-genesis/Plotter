@@ -65,6 +65,7 @@ if __name__ == "__main__":
     func_str = input("f(x) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     func_str = func_str.replace("ln(", "log(")
+    func_str = func_str.replace("^", "**")
 
 
     print("\nEnter x bounds (e.g., 0, 5):")

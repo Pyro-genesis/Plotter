@@ -86,13 +86,14 @@ if __name__ == "__main__":
     func_str = input("f(x, y) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     func_str = func_str.replace("ln(", "log(")
+    func_str = func_str.replace("^", "**")  # Replace ^ with ** for power operator
 
 
     print("\nDefine the region R by a condition on x and y (e.g., x**2 + y**2 <= 4):")
     region_str = input("Region condition: ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     region_str = region_str.replace("ln(", "log(")
-
+    region_str = region_str.replace("^", "**")  # Replace ^ with ** for power operator
 
     print("\nEnter x bounds (e.g., -3, 3):")
     x_min, x_max = map(float, input("x_min, x_max = ").split(','))
