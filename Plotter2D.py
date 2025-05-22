@@ -63,6 +63,9 @@ if __name__ == "__main__":
 
     print("Enter the function f(x) (use numpy functions, e.g., sin(x) + x**2):")
     func_str = input("f(x) = ")
+    # Replace ln(x) with log(x) to support natural log with 'ln' notation
+    func_str = func_str.replace("ln(", "log(")
+
 
     print("\nEnter x bounds (e.g., 0, 5):")
     x_min, x_max = map(float, input("x_min, x_max = ").split(','))

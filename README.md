@@ -6,11 +6,13 @@ install requirements.txt
 mod resolution in settings.txt
 - default: 80
 - colormap: viridris
+other colormap suggestions:
     - plasma
     - coolwarm
     - inferno
     - cividris
     - magma
+    - winter
 
 my take on a volume two integral visualizer...ya! 
 maybe more...
