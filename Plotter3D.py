@@ -65,7 +65,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
-    ax.set_title("Double Integral Surface Render with Shaded Volume: " + func_str + ' within ' + region_str)
+    ax.set_title("Double Integral Surface Render with Shaded Volume: " + entryType + ' within ' + entryTypeRegion)
     plt.show()
     plt.tight_layout()
     func_name = sanitize_filename(func_str.split('(')[0].strip())  # crude extraction before "(" if any
@@ -85,6 +85,7 @@ if __name__ == "__main__":
     print("Enter the function f(x, y) (use numpy functions, e.g., sin(x)*cos(y)):")
     func_str = input("f(x, y) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
+    entryType = func_str
     func_str = func_str.replace("ln(", "log(")
     func_str = func_str.replace("^", "**")  # Replace ^ with ** for power operator
 
@@ -92,6 +93,7 @@ if __name__ == "__main__":
     print("\nDefine the region R by a condition on x and y (e.g., x**2 + y**2 <= 4):")
     region_str = input("Region condition: ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
+    entryTypeRegion = region_str
     region_str = region_str.replace("ln(", "log(")
     region_str = region_str.replace("^", "**")  # Replace ^ with ** for power operator
 

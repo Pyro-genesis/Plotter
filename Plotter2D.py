@@ -44,7 +44,7 @@ def plot_single_integral(f, xlim, resolution=read_resolution_from_settings()):
     ax.axhline(0, color='gray', linewidth=0.8)
     ax.set_xlabel('x')
     ax.set_ylabel('f(x)')
-    ax.set_title('Single Integral Area Render Under Curve: ' + func_str)
+    ax.set_title('Single Integral Area Render Under Curve: ' + entryType)
     ax.grid(True)
 
     plt.tight_layout()
@@ -64,6 +64,7 @@ if __name__ == "__main__":
     print("Enter the function f(x) (use numpy functions, e.g., sin(x) + x**2):")
     func_str = input("f(x) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
+    entryType = func_str
     func_str = func_str.replace("ln(", "log(")
     func_str = func_str.replace("^", "**")
 
