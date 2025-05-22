@@ -86,6 +86,8 @@ if __name__ == "__main__":
     func_str = input("f(x, y) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     entryType = func_str
+    entryType = entryType.replace("**", "^")
+    entryType = entryType.replace("log(", "ln(")
     func_str = func_str.replace("ln(", "log(")
     func_str = func_str.replace("^", "**")  # Replace ^ with ** for power operator
 
@@ -94,6 +96,8 @@ if __name__ == "__main__":
     region_str = input("Region condition: ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     entryTypeRegion = region_str
+    entryTypeRegion = entryTypeRegion.replace("**", "^")
+    entryTypeRegion = entryTypeRegion.replace("log(", "ln(")
     region_str = region_str.replace("ln(", "log(")
     region_str = region_str.replace("^", "**")  # Replace ^ with ** for power operator
 

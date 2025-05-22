@@ -1,2 +1,2 @@
-resolution: {20}
-colormap: {viridis}
+resolution: {80}
+colormap: {plasma}

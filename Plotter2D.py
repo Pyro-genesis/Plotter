@@ -65,6 +65,8 @@ if __name__ == "__main__":
     func_str = input("f(x) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     entryType = func_str
+    entryType = entryType.replace("log(", "ln(")
+    entryType = entryType.replace("**", "^")
     func_str = func_str.replace("ln(", "log(")
     func_str = func_str.replace("^", "**")
 
