@@ -12,6 +12,7 @@ mod resolution in settings.txt
     - cividris
     - magma
 
-my take on a volume two integral visualizer...ya!
+my take on a volume two integral visualizer...ya! 
+maybe more...
 
-v1.3.0[2025/05/21]
+v1.4.0[2025/05/21]

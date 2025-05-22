@@ -72,7 +72,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     folder = "functions"
     os.makedirs(folder, exist_ok=True)
-    filename = f"{func_name}-{timestamp}.png"
+    filename = f"2I_{func_name}-{timestamp}.png"
     filepath = os.path.join(folder, filename)
     plt.tight_layout()
     plt.savefig(filepath)
