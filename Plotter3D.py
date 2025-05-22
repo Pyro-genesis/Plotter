@@ -20,6 +20,17 @@ def read_resolution_from_settings(path="settings.txt", default=80):
     except Exception as e:
         print(f"⚠️ Could not read resolution from settings.txt: {e}")
     return default
+def read_colormap_from_settings(path="settings.txt", default="viridis"):
+    try:
+        with open(path, 'r') as file:
+            for line in file:
+                if "colormap" in line:
+                    start = line.find('{') + 1
+                    end = line.find('}')
+                    return line[start:end].strip()
+    except Exception as e:
+        print(f"⚠️ Could not read colormap from settings.txt: {e}")
+    return default
 
 def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_from_settings()):
     x = np.linspace(xlim[0], xlim[1], resolution)
@@ -27,13 +38,14 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     xv, yv = np.meshgrid(x, y)
     xv_flat = xv.flatten()
     yv_flat = yv.flatten()
+    cmap_name = read_colormap_from_settings()
 
     points = np.array([
         (x, y) for x, y in zip(xv_flat, yv_flat) if in_region(x, y)
     ])
     if len(points) == 0:
         raise ValueError("No points found in the region R.")
-8
+   
     x_in = points[:, 0]
     y_in = points[:, 1]
     z_in = f(x_in, y_in)
@@ -43,7 +55,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
-    ax.plot_trisurf(tri, z_in, cmap=cm.viridis, edgecolor='none', alpha=0.9)
+    ax.plot_trisurf(tri, z_in, cmap=cm.get_cmap(cmap_name), edgecolor='none', alpha=0.9)
     ax.plot_trisurf(tri, np.zeros_like(z_in), color='lightgray', alpha=0.25)
 
     for i in range(len(z_in)):
@@ -53,7 +65,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
-    ax.set_title("Double Integral Surface with Shaded Volume")
+    ax.set_title("Double Integral Surface Render with Shaded Volume")
     plt.show()
     plt.tight_layout()
     func_name = sanitize_filename(func_str.split('(')[0].strip())  # crude extraction before "(" if any

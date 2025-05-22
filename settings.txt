@@ -1,1 +1,2 @@
 resolution:{80}
+colormap:{"viridis"}
