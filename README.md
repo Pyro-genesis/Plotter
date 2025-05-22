@@ -5,12 +5,12 @@ install requirements.txt
 - pip3 install numpy
 mod resolution in settings.txt
 - default: 80
-- colormap: viridris
+- colormap: viridis
 other colormap suggestions:
     - plasma
     - coolwarm
     - inferno
-    - cividris
+    - cividis
     - magma
     - winter
 
