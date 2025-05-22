@@ -56,7 +56,7 @@ def plot_single_integral(f, xlim, resolution=read_resolution_from_settings()):
     filepath = os.path.join(folder, filename)
     plt.savefig(filepath)
     plt.show()
-    print(f"✅ Plot saved as {filepath}")
+    print(f"✅ Plot saved as {filepath}; Please Download it from the functions folder.")
 
 if __name__ == "__main__":
     import math

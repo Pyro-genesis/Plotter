@@ -65,7 +65,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
-    ax.set_title("Double Integral Surface Render with Shaded Volume: " + func_str + 'within' + region_str)
+    ax.set_title("Double Integral Surface Render with Shaded Volume: " + func_str + ' within ' + region_str)
     plt.show()
     plt.tight_layout()
     func_name = sanitize_filename(func_str.split('(')[0].strip())  # crude extraction before "(" if any
@@ -76,7 +76,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     filepath = os.path.join(folder, filename)
     plt.tight_layout()
     plt.savefig(filepath)
-    print(f"✅ Plot saved as {filepath}")
+    print(f"✅ Plot saved as {filepath}; Please Download it from the functions folder.")
 
 
 if __name__ == "__main__":
