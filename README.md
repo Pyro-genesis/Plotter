@@ -14,6 +14,10 @@ other colormap suggestions:
     - magma
     - winter
 
+<RUN SHELL ONLY>
+
+
+
 my take on a volume two integral visualizer...ya! 
 maybe more...
 
