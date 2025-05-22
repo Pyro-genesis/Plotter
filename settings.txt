@@ -1,2 +1,2 @@
-resolution:{80}
-colormap {inferno}
+resolution: {20}
+colormap: {viridis}

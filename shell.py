@@ -35,12 +35,12 @@ def update_setting(key, value):
     with open(SETTINGS_FILE, 'w') as file:
         file.writelines(lines)
     
-    print(f"✅ Updated setting: {key} = {value}")
+    print(f"✅ Updated setting: {key[:-1]} = {value}")
 
 def handle_command(command):
     parts = command.strip().split()
     if len(parts) < 3:
-        print("⚠️ Invalid settings command. Usage: /settings resolution 100 or /settings cm viridis")
+        print("⚠️ Invalid settings command. Usage: /settings res 100 or /settings cm viridis")
         return
     
     _, key, value = parts[0], parts[1], ' '.join(parts[2:])
@@ -49,13 +49,13 @@ def handle_command(command):
         if not value.isdigit():
             print("⚠️ Resolution must be a number.")
             return
-        update_setting("resolution", value)
+        update_setting("resolution:", value)
     elif key.lower() in ["cm", "colormap"]:
         if value not in plt.colormaps():
             print("⚠️ Invalid colormap name.")
             return
         else:
-            update_setting("colormap", value)
+            update_setting("colormap:", value)
     else:
         print("⚠️ Unknown setting key.")
 
