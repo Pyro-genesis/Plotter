@@ -15,7 +15,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # pick your Python version
+          python-version: '3.12.1'  # pick your Python version
 
       - name: Install dependencies (if you have any)
         run: |
@@ -25,4 +25,5 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Run shell.py script
-        run: python shell.py
+        run: python path/to/shell.py
+
