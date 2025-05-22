@@ -22,6 +22,7 @@ jobs:
           python -m pip install --upgrade pip
           # If you have requirements.txt, uncomment next line:
           # pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
       - name: Run shell.py script
         run: python shell.py
