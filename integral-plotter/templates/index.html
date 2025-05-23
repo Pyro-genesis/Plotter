@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Integral Plotter</title>
+<style>
+  body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 20px;
+  }
+  .container {
+    display: flex;
+    gap: 20px;
+  }
+  .form-container {
+    flex: 1;
+  }
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  label {
+    display: block;
+    margin: 8px 0 4px;
+    font-weight: bold;
+  }
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+  .hidden {
+    display: none;
+  }
+  .buttons {
+    margin: 10px 0;
+  }
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+</style>
+<script>
+  function onIntegralTypeChange() {
+    const singleBtn = document.getElementById("integral_single");
+    const regionInput = document.getElementById("region_group");
+    const yBoundsInput = document.getElementById("y_bounds_group");
+
+    if(singleBtn.checked) {
+      regionInput.style.display = "none";
+      yBoundsInput.style.display = "none";
+    } else {
+      regionInput.style.display = "block";
+      yBoundsInput.style.display = "block";
+    }
+  }
+  window.onload = function() {
+    onIntegralTypeChange();
+    // Add event listeners
+    document.getElementById("integral_single").addEventListener("change", onIntegralTypeChange);
+    document.getElementById("integral_double").addEventListener("change", onIntegralTypeChange);
+  };
+</script>
+</head>
+<body>
+  <h1>Integral Plotter</h1>
+
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="container">
+    <div class="form-container">
+      <div class="buttons">
+        <label><input type="radio" name="integral_type" value="single" id="integral_single"
+          {% if integral_type == "single" %}checked{% endif %}> Single Integral (2D)</label>
+        <label><input type="radio" name="integral_type" value="double" id="integral_double"
+          {% if integral_type == "double" %}checked{% endif %}> Double Integral (3D)</label>
+      </div>
+
+      <label for="function">Integral Function:</label>
+      <textarea id="function" name="function" rows="2" required>{{ request.form.function or '' }}</textarea>
+
+      <div id="region_group">
+        <label for="region">Region Condition:</label>
+        <textarea id="region" name="region" rows="2">{{ request.form.region or '' }}</textarea>
+      </div>
+
+      <label for="x_bounds">X Bounds (comma separated, e.g. -3,3):</label>
+      <input type="text" id="x_bounds" name="x_bounds" required value="{{ request.form.x_bounds or '' }}">
+
+      <div id="y_bounds_group">
+        <label for="y_bounds">Y Bounds (comma separated, e.g. -3,3):</label>
+        <input type="text" id="y_bounds" name="y_bounds" value="{{ request.form.y_bounds or '' }}">
+      </div>
+
+      <button type="submit" style="margin-top: 10px;">Submit</button>
+    </div>
+
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='functions/' + plot_image) }}" alt="Integral plot or example">
+    </div>
+  </form>
+</body>
+</html>
+<!-- This HTML template is used to render the integral plotter interface. It includes a form for user input and an image display area for the plot. -->
+<!-- The form allows users to select between single and double integrals, input the function, region condition, and bounds. The image area displays the generated plot based on user input. -->
+<!-- The JavaScript function handles the visibility of the region and y-bounds inputs based on the selected integral type. -->
+<!-- The CSS styles ensure a clean and responsive layout for the form and image display. -->
+<!-- The error message is displayed if there are any issues with the input or plot generation. -->

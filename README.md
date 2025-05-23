@@ -1,8 +1,11 @@
 # Plotter
 
-install requirements.txt
-- pip3 install matplotlib
-- pip3 install numpy
+install requirements.txt:
+- use: pip install -r integral-plotter/requirements.txt
+    if it fails:
+    - pip3 install matplotlib
+    - pip3 install numpy
+    - pip3 install flask
 mod resolution in settings.txt
 - default: 80
 - colormap: viridis
