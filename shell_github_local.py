@@ -4,7 +4,7 @@ import os
 import re
 import matplotlib.pyplot as plt
 
-SETTINGS_FILE = "settings.txt"
+SETTINGS_FILE = "integral-plotter/settings.txt"
 
 def run_script(script_name):
     if os.path.exists(script_name):
@@ -67,7 +67,7 @@ def handle_command(command):
 
 def main():
     print("=== Integral Plotter Shell ===")
-    print("Type `/settings resolution <integer>` or `/settings cm <colormap>` to update settings.")
+    print("Type `/settings res2d <integer>` or `/settings cm <colormap>` to update settings.")
     print("Or choose a plotter:")
     print("1. Single Integral (2D)")
     print("2. Double Integral (3D)")

@@ -9,7 +9,7 @@ import re
 def sanitize_filename(name):
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
-def read_resolution_from_settings(path="settings.txt", default=80):
+def read_resolution_from_settings(path="integral-plotter/settings.txt", default=80):
     try:
         with open(path, 'r') as file:
             for line in file:
@@ -18,9 +18,9 @@ def read_resolution_from_settings(path="settings.txt", default=80):
                     end = line.find('}')
                     return int(line[start:end])
     except Exception as e:
-        print(f"⚠️ Could not read resolution from settings.txt: {e}")
+        print(f"⚠️ Could not read resolution from integral-plotter/settings.txt: {e}")
     return default
-def read_colormap_from_settings(path="settings.txt", default="viridis"):
+def read_colormap_from_settings(path="integral-plotter/settings.txt", default="viridis"):
     try:
         with open(path, 'r') as file:
             for line in file:
@@ -29,7 +29,7 @@ def read_colormap_from_settings(path="settings.txt", default="viridis"):
                     end = line.find('}')
                     return line[start:end].strip()
     except Exception as e:
-        print(f"⚠️ Could not read colormap from settings.txt: {e}")
+        print(f"⚠️ Could not read colormap from integral-plotter/settings.txt: {e}")
     return default
 
 def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_from_settings()):
