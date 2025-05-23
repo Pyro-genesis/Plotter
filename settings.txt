@@ -1,2 +1,3 @@
-resolution: {80}
+resolution2d: {170}
+resolution3d: {20}
 colormap: {plasma}

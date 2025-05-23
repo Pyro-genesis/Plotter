@@ -13,7 +13,7 @@ def read_resolution_from_settings(path="settings.txt", default=80):
     try:
         with open(path, 'r') as file:
             for line in file:
-                if "resolution:" in line:
+                if "resolution3d:" in line:
                     start = line.find('{') + 1
                     end = line.find('}')
                     return int(line[start:end])

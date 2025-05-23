@@ -40,22 +40,28 @@ def update_setting(key, value):
 def handle_command(command):
     parts = command.strip().split()
     if len(parts) < 3:
-        print("⚠️ Invalid settings command. Usage: /settings res 100 or /settings cm viridis")
+        print("⚠️ Invalid settings command. Usage: /settings res2d 100 or /settings cm viridis")
         return
     
     _, key, value = parts[0], parts[1], ' '.join(parts[2:])
     
-    if key.lower() in ["resolution", "res", "resolutions"]:
+    if key.lower() in ["resolution2d", "res2d"]:
         if not value.isdigit():
             print("⚠️ Resolution must be a number.")
             return
-        update_setting("resolution:", value)
+        update_setting("resolution2d:", value)
     elif key.lower() in ["cm", "colormap"]:
         if value not in plt.colormaps():
             print("⚠️ Invalid colormap name.")
             return
         else:
             update_setting("colormap:", value)
+    elif key.lower() in ["resolution3d", "res3d"]:
+        if not value.isdigit():
+            print("⚠️ Resolution must be a number.")
+            return
+        else:
+            update_setting("resolution3d:", value)
     else:
         print("⚠️ Unknown setting key.")
 
