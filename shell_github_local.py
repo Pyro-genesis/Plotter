@@ -62,6 +62,12 @@ def handle_command(command):
             return
         else:
             update_setting("resolution3d:", value)
+    elif key.lower() in ["resolutionSurface", "resSurface"]:
+        if not value.isdigit():
+            print("⚠️ Resolution must be a number.")
+            return
+        else:
+            update_setting("resolutionSurface:", value)
     else:
         print("⚠️ Unknown setting key.")
 
@@ -71,6 +77,7 @@ def main():
     print("Or choose a plotter:")
     print("1. Single Integral (2D)")
     print("2. Double Integral (3D)")
+    print("3. Surface Integral (3D Cloth)")
 
     user_input = input("Input: ").strip()
 
@@ -80,6 +87,8 @@ def main():
         run_script("localrun/Plotter2D.py")
     elif user_input == '2':
         run_script("localrun/Plotter3D.py")
+    elif user_input == '3':
+        run_script("localrun/SurfacePlot.py")
     else:
         print("⚠️ Invalid input.")
 

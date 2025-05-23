@@ -19,7 +19,7 @@ def read_resolution_from_settings(path="integral-plotter/settings.txt", default=
     try:
         with open(path, 'r') as file:
             for line in file:
-                if "resolution2d:" in line:
+                if "resolutionSurface:" in line:
                     start = line.find('{') + 1
                     end = line.find('}')
                     return int(line[start:end])
@@ -48,15 +48,15 @@ def sanitize_filename(name):
 def get_user_input():
     print("Enter parametric surface:")
     x_expr = input("x(u,v) = ")
-    change_formatting(x_expr)
+    x_expr= change_formatting(x_expr)
     y_expr = input("y(u,v) = ")
-    change_formatting(y_expr)
+    y_expr = change_formatting(y_expr)
     z_expr = input("z(u,v) = ")
-    change_formatting(z_expr)
+    z_expr = change_formatting(z_expr)
 
     print("\nEnter scalar field f(x,y,z):")
     f_expr = input("f(x,y,z) = ")
-    change_formatting(f_expr)
+    f_expr = change_formatting(f_expr)
     
     print("\nEnter bounds:")
     u_min = float(input("u_min = "))
@@ -90,13 +90,13 @@ def plot_surface(x_expr, y_expr, z_expr, f_expr, u_min, u_max, v_min, v_max):
     plt.tight_layout()
     func_name = sanitize_filename(f_expr.split('(')[0].strip())  # crude extraction before "(" if any
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    folder = "functions"
+    folder = "functions/Surface_Integrals"
     os.makedirs(folder, exist_ok=True)
-    filename = f"2I_{func_name}-{timestamp}.png"
+    filename = f"SI_{func_name}-{timestamp}.png"
     filepath = os.path.join(folder, filename)
     plt.tight_layout()
     plt.savefig(filepath)
-    print(f"✅ Plot saved as {filepath}; Please download it from the functions folder.")
+    print(f"✅ Plot saved as {filepath}; Please download it from the functions/surface_integrals folder.")
 
 
 if __name__ == "__main__":

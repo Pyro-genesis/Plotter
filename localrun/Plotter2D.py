@@ -50,13 +50,13 @@ def plot_single_integral(f, xlim, resolution=read_resolution_from_settings()):
     plt.tight_layout()
     func_name = sanitize_filename(func_str.split('(')[0].strip())
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    folder = "functions"
+    folder = "functions/Single_Integrals"
     os.makedirs(folder, exist_ok=True)
     filename = f"1I_{func_name}-{timestamp}.png"
     filepath = os.path.join(folder, filename)
     plt.savefig(filepath)
     plt.show()
-    print(f"✅ Plot saved as {filepath}; Please download it from the functions folder.")
+    print(f"✅ Plot saved as {filepath}; Please download it from the functions/single_integrals folder.")
 
 if __name__ == "__main__":
     import math

@@ -70,13 +70,13 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     plt.tight_layout()
     func_name = sanitize_filename(func_str.split('(')[0].strip())  # crude extraction before "(" if any
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    folder = "functions"
+    folder = "functions/Double_Integrals"
     os.makedirs(folder, exist_ok=True)
     filename = f"2I_{func_name}-{timestamp}.png"
     filepath = os.path.join(folder, filename)
     plt.tight_layout()
     plt.savefig(filepath)
-    print(f"✅ Plot saved as {filepath}; Please download it from the functions folder.")
+    print(f"✅ Plot saved as {filepath}; Please download it from the functions/double_integrals folder.")
 
 
 if __name__ == "__main__":

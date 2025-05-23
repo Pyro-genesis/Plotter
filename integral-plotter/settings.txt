@@ -1,3 +1,4 @@
 resolution2d: {120}
 resolution3d: {20}
+resolutionSurface: {80}
 colormap: {plasma}
