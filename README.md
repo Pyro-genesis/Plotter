@@ -24,4 +24,4 @@ other colormap suggestions:
 my take on a volume two integral visualizer...ya! 
 maybe more...
 
-v1.4.7[2025/05/22]
+v1.6 test [2025/05/23]
