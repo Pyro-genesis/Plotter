@@ -4,6 +4,7 @@ from matplotlib import cm
 import os
 from datetime import datetime
 import re
+from app import func_str, X_BOUNDS
 
 def sanitize_filename(name):
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
@@ -56,13 +57,10 @@ def plot_single_integral(f, xlim, resolution=read_resolution_from_settings()):
     filepath = os.path.join(folder, filename)
     plt.savefig(filepath)
     plt.show()
-    print(f"✅ Plot saved as {filepath}; Please Download it from the functions folder.")
+    print(f"✅ Plot saved as {filepath}; Please download it from the functions folder.")
 
 if __name__ == "__main__":
     import math
-
-    print("Enter the function f(x) (use numpy functions, e.g., sin(x) + x**2):")
-    func_str = input("f(x) = ")
     # Replace ln(x) with log(x) to support natural log with 'ln' notation
     entryType = func_str
     entryType = entryType.replace("log(", "ln(")
@@ -72,7 +70,7 @@ if __name__ == "__main__":
 
 
     print("\nEnter x bounds (e.g., 0, 5):")
-    x_min, x_max = map(float, input("x_min, x_max = ").split(','))
+    x_min, x_max = map(float, X_BOUNDS.split(','))
 
     allowed_names = {k: v for k, v in vars(np).items() if not k.startswith("__")}
     allowed_names.update({'math': math, 'np': np})

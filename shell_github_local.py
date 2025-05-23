@@ -77,9 +77,9 @@ def main():
     if user_input.startswith("/settings"):
         handle_command(user_input)
     elif user_input == '1':
-        run_script("integral-plotter/Plotter2D.py")
+        run_script("localrun/Plotter2D.py")
     elif user_input == '2':
-        run_script("integral-plotter/Plotter3D.py")
+        run_script("localrun/Plotter3D.py")
     else:
         print("⚠️ Invalid input.")
 

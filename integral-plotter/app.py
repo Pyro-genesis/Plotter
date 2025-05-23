@@ -13,8 +13,8 @@ def index():
 
     if request.method == "POST":
         integral_type = request.form.get("integral_type")
-        function = request.form.get("function")
-        region = request.form.get("region", "")
+        func_str = request.form.get("function")
+        region_str = request.form.get("region", "")
         x_bounds = request.form.get("x_bounds")
         y_bounds = request.form.get("y_bounds", "")
 
@@ -25,13 +25,13 @@ def index():
 
         # Save inputs as environment variables for subprocess
         env = os.environ.copy()
-        env["FUNCTION"] = function
+        env["FUNCTION"] = func_str
         env["X_BOUND"] = x_bounds
         env["Y_BOUND"] = y_bounds if integral_type == "double" else ""
-        env["REGION"] = region if integral_type == "double" else ""
+        env["REGION"] = region_str if integral_type == "double" else ""
 
         # Choose script to run
-        script = "Plotter3D.py" if integral_type == "double" else "Plotter2D.py"
+        script = "Plotter3Dapp.py" if integral_type == "double" else "Plotter2Dapp.py"
 
         # Run the plotting script
         import subprocess
@@ -54,4 +54,4 @@ def index():
     return render_template("index.html", integral_type="single", plot_image=plot_image)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)

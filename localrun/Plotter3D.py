@@ -76,7 +76,7 @@ def plot_double_integral(f, in_region, xlim, ylim, resolution=read_resolution_fr
     filepath = os.path.join(folder, filename)
     plt.tight_layout()
     plt.savefig(filepath)
-    print(f"✅ Plot saved as {filepath}; Please Download it from the functions folder.")
+    print(f"✅ Plot saved as {filepath}; Please download it from the functions folder.")
 
 
 if __name__ == "__main__":
